@@ -1,0 +1,43 @@
+<% layout('layout') %> <% if (message) { %>
+<div
+  class="card"
+  style="border-color: #16a34a; background: #052e1e; color: #a7f3d0"
+>
+  <%= message %>
+</div>
+<% } %> <% if (posts.length === 0) { %>
+<div class="empty">No posts yet. Click "New Post" to create one.</div>
+<% } %>
+
+<div class="grid">
+  <% posts.forEach(function(post){ %>
+  <article class="card">
+    <h2 class="post-title">
+      <a
+        style="color: inherit; text-decoration: none"
+        href="/posts/<%= post.id %>"
+        ><%= post.title %></a
+      >
+    </h2>
+    <div class="post-meta">
+      Created <%= new Date(post.createdAt).toLocaleString() %>
+    </div>
+    <p class="post-body">
+      <%= post.body.length > 220 ? post.body.slice(0, 220) + '…' : post.body %>
+    </p>
+    <div class="actions" style="margin-top: 12px">
+      <a class="btn secondary" href="/posts/<%= post.id %>">View</a>
+      <a class="btn" href="/posts/<%= post.id %>/edit">Edit</a>
+      <form
+        action="/posts/<%= post.id %>?_method=DELETE"
+        method="post"
+        style="display: inline"
+      >
+        <button class="danger" onclick="return confirm('Delete this post?')">
+          Delete
+        </button>
+      </form>
+    </div>
+  </article>
+  <% }) %>
+</div>

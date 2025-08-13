@@ -1,0 +1,114 @@
+/* Basic modern, responsive styling */
+:root {
+  --bg: #0f172a;
+  --surface: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #22d3ee;
+  --primary-contrast: #0c4a6e;
+  --danger: #ef4444;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), #111827);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+header {
+  border-bottom: 1px solid #27525599;
+  background: #27525599;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.8;
+}
+nav a:hover { opacity: 1; }
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button, .btn {
+  border: none;
+  background: var(--primary);
+  color: #0b1220;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+button.secondary, .btn.secondary { background: #374151; color: var(--text); }
+button.danger, .btn.danger { background: var(--danger); color: #fff; }
+button:hover, .btn:hover { transform: translateY(-1px); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 12;
+  background: var(--surface);
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+@media (min-width: 720px) {
+  .card { grid-column: span 6; }
+}
+
+.post-title { margin: 0 0 8px; font-size: 20px; }
+.post-meta { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.post-body { color: #f3f4f6; }
+
+form .field { display: grid; gap: 8px; margin-bottom: 16px; }
+form label { font-weight: 600; }
+form input[type="text"], form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #374151;
+  background: #0b1220;
+  color: var(--text);
+}
+form textarea { min-height: 160px; resize: vertical; }
+.error { color: #fecaca; font-size: 13px; }
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 48px 0;
+}
+
+footer { color: var(--muted); text-align: center; padding: 24px; }
+
+

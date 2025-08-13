@@ -1,0 +1,17 @@
+<% layout('layout') %>
+
+<article class="card">
+  <h1 class="post-title"><%= post.title %></h1>
+  <div class="post-meta">Created <%= new Date(post.createdAt).toLocaleString() %> | Updated <%= new Date(post.updatedAt).toLocaleString() %></div>
+  <div class="post-body"><pre style="white-space:pre-wrap;font-family:inherit;"> <%= post.body %></pre></div>
+
+  <div class="actions" style="margin-top:16px">
+    <a class="btn secondary" href="/posts">Back</a>
+    <a class="btn" href="/posts/<%= post.id %>/edit">Edit</a>
+    <form action="/posts/<%= post.id %>?_method=DELETE" method="post" style="display:inline">
+      <button class="danger" onclick="return confirm('Delete this post?')">Delete</button>
+    </form>
+  </div>
+</article>
+
+
